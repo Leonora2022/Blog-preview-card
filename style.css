@@ -1,0 +1,176 @@
+
+:root {
+    --base-size: 1rem;
+    --scale: 1.25;
+    --h5: calc(var(--base-size) * var(--scale));
+    --h4: calc(var(--h5) * var(--scale));
+    --h3: calc(var(--h4) * var(--scale));
+    --h2: calc(var(--h3) * var(--scale));
+    --h1: calc(var(--h2) * var(--scale));
+    --small-text: calc(var(--base-size) / var(--scale));
+    --bg-color: hsl(47, 88%, 63%);
+    --neutral-color-white: hsl(0, 0%, 100%);
+    --neutral-color-gray: hsl(0, 0%, 50%);
+    --neutral-color-black:  hsl(0, 0%, 7%);
+    --primary-font-family: 'Figtree', sans-serif;
+    --size: 100;
+    --linear-color: linear-gradient(90deg, var(--neutral-color-gray), var(--bg-color));
+}
+
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::after,
+*::before {
+    box-sizing: inherit;
+}
+
+* {
+    --primary-bg-color: initial;
+    --primary-text-color: initiail;
+    --font-family: initial;
+    --font-size: initial;
+    background-color: var(--primary-bg-color);
+    color: var(--primary-text-color, #000);
+    font-family: var(--font-family);
+    font-size: var(--font-size);
+   
+}
+
+body {
+    --primary-bg-color: var(--bg-color);
+    --primary-text-color: var(--neutral-color-black);
+    --font-family: var(--primary-font-family);
+    --font-size: var( --base-size);
+    display: flex;
+    min-height: calc(var(--size) * 1vh);
+    justify-content: center;
+    align-items: center;
+}
+
+article.blog-card {
+    --primary-bg-color: var(--neutral-color-white);
+    max-width: 240px;
+    border: var(--border, 1px solid var(--neutral-color-black));
+    box-shadow: 9px 9px 0px 2px var(--neutral-color-black);
+}
+article .card-body {
+    width: 95%;
+    margin: 0 auto;
+    padding: var(--h5) var(--base-size);
+}
+
+
+.card-body > .card-img, .card-img img {
+    width: calc(var(--size) * 1%);
+    border-radius: calc(var(--base-size) / 2);
+}
+
+article.blog-card{
+    border-radius: var(--h3);
+}
+figure.card-body > figcaption > :first-child {
+    --primary-bg-color: var(--bg-color);
+    border: 0;
+    padding: 0.3rem 0.7rem;
+    border-radius: 5px var(--small-text);
+    margin-top: var(--small-text);
+    font-weight: bold;
+    display: block;
+    cursor: pointer;
+    color: var(--title);
+    transition: --title 3s linear;
+}
+figure.card-body > figcaption > :first-child:hover,
+figure.card-body > figcaption > :first-child:focus {
+    --title: #240d63;
+}
+
+figure.card-body > figcaption > :nth-child(2) {
+     font-weight: lighter;
+     font-style: italic;
+}
+@property --title {
+    syntax: "<color>";
+    initial-value: var(--neutral-color-black);
+    inherits: true;
+}
+
+figure.card-body > figcaption > :nth-child(3) {
+    font-weight: bold;
+    --font-size: var(--h5);
+    color: var(--title);
+    transition: --title 2s cubic-bezier(.73,0,.37,1) 0.3s;
+    cursor: pointer;
+}
+figure.card-body > figcaption > :nth-child(3):hover,
+figure.card-body > figcaption > :nth-child(3):focus{
+    --title: var(--bg-color); 
+}
+figure.card-body > figcaption > :nth-child(4) {
+    --primary-text-color: var(--neutral-color-gray);
+}
+figure.card-body > figcaption > :nth-child(5) {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-left: 0;
+    padding-left: 0;
+    gap: calc(var(--base-size) / 2);
+    
+}
+figure.card-body > figcaption > :nth-child(5) img {
+  border: var(--border, 2px solid var(--bg-color));
+  border-radius: 50%;
+}
+.attribution { font-size: var(--small-text);
+     text-align: center; 
+     font-style: italic;
+    }
+    .attribution a { color: hsl(228, 45%, 44%); }
+
+   
+@media (min-width: 768px) {
+    :root {
+        --scale: 1.3;
+    }
+    body {
+        --font-size: var(--h4);
+    }
+    article.blog-card {
+    max-width: 700px;
+    border: var(--border, 2px solid var(--neutral-color-black));
+    box-shadow: 12px 12px 0px 2px var(--neutral-color-black);
+    }
+   
+    article .card-body {
+        padding:  var(--h4)  var(--base-size);   
+    }
+
+    figure.card-body > figcaption > :first-child {
+        background: var(--linear-color);
+        padding: 0.6rem var(--h5);
+    }
+
+    figure.card-body > figcaption > :nth-child(2),
+    figure.card-body > figcaption > :nth-child(4) {
+        --font-size: var(--h3)
+   }
+
+   figure.card-body > figcaption > :nth-child(3) {
+    --font-size: var(--h2);
+   }
+
+   figure.card-body > figcaption > :nth-child(5) {
+    --font-size: var(--h3);
+    margin-bottom: 0;
+    gap: var(--base-size);
+   }
+
+   figure.card-body > figcaption > :nth-child(5) img {
+    border: var(--border, 5px solid var(--bg-color));
+  }
+  
+}
